@@ -1,0 +1,54 @@
+﻿@page
+@model WorkOrderProject.Pages.WorkOrders.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkOrder[0].RepairDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkOrder[0].PropertyAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkOrder[0].RepairDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkOrder[0].Cost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.WorkOrder) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PropertyAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepairDetails)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
